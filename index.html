@@ -1,203 +1,283 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]> <html class="ie lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>    <html class="ie lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>    <html class="ie lt-ie9"> <![endif]-->
-<!--[if gt IE 8]> <html> <![endif]-->
-<!--[if !IE]><!--><html lang="en"><!-- <![endif]-->
+
 <head>
-	<title>Happy Birthday</title>
-	<meta charset="UTF-8" />
-	<meta name="description" content="Happy Birthday">
-	<meta name="robots" content="index, follow" />
-	<link rel="author" href="https://plus.google.com/u/1/+AyushSharma1/" /> 
-    <meta name="keywords" content="Birthday, Happy">
-    <!-- Strat of Facebook Meta -->
-    <meta property="og:type" content="E-Greeting" />
-    <meta property="og:image" content="favicon.ico" />
-    <meta property="og:description" content="Wish you a very Happy Birthday">
-    <!-- End of Facebook Meta Tags -->
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
-	<meta name="apple-mobile-web-app-capable" content="yes">
-	<meta name="apple-mobile-web-app-status-bar-style" content="black">
-	<meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE" />
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="stylesheet.css">
-	<link rel="stylesheet" type="text/css" href="loading.css">
-	<link href='http://fonts.googleapis.com/css?family=Signika' rel='stylesheet' type='text/css'>
-	<!-- <link href='http://fonts.googleapis.com/css?family=Nunito' rel='stylesheet' type='text/css'> -->
-	<link rel="stylesheet/less" href="cake.less">
-	<script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.1.0/less.min.js"></script>
+    <meta charset="utf-8">
+    <style type="text/css">
+    body {
+  margin: 0;
+  background-color: #112;
+  padding: 0;
+}
+
+        .bo {
+            width: 90vmin;
+            height: 90vmin;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .tile {
+            display: block;
+            float: left;
+            border-radius: 5%;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .tile:after {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 100%;
+            border-radius: 5%;
+            position: absolute;
+            /*left:0; top:0;*/
+            bottom: 0;
+            right: 0;
+
+            transition: transform 0.2s;
+        }
+
+        .tile {
+            width: 100px;
+            width: 17%;
+            height: 100px;
+            height: 17%;
+            margin: 20px;
+            margin: 4%;
+        }
+
+        .tile::after {
+            background-color: #900;
+        }
+
+        .tile .fa {
+        width: 100%;
+        height: 100%;
+        }
+
+        .tile_open::after{
+            transition: transform 0.2s;
+             transform: translateX(-105%);
+        }
+        .tile_closed {
+            cursor: normal;
+            opacity: 0.3;
+            transition: opacity 0.5s;
+            }
+        
+.overlay_win {
+  position: absolute;
+  top: 25vmin;
+  left: 0;
+  height: 40vmin;
+  width: 100%;
+  text-align: center;
+}
+.overlay_win {
+  background-color: #b00;
+}
+
+.overlay_win h2 {
+  font-size: 15vmin;
+  line-height: 15vmin;
+  margin: 5vmin 0px;
+}
+.overlay_win h2 {
+  color: #112;
+  font-family: 'Roboto', sans-serif;
+}
+
+#replay {
+  font-size: 7vmin;
+  display: inline-block;
+  border-radius: 1vmin;
+  padding: 2vmin 4vmin;
+  font-family: 'Roboto', sans-serif;
+  cursor: pointer;
+}
+
+#replay {
+  background-color: #112;
+  color: #b00;
+}
+
+#replay:hover {
+  color: #e00;
+}
+
+.overlay_win {
+  opacity: 0;
+  transition: opacity 0.4s;
+  pointer-events: none;
+}
+.overlay_win_open {
+  opacity: 0.9;
+  transition: opacity 0.4s;
+  pointer-events: auto;
+}
+    </style>
 </head>
 
 <body>
-	<div class="loading"></div>
-	<audio class="song" controls loop>
-        <source src="hbd.mp3"></source>
-	   Your browser isn't invited for super fun audio time.
-    </audio>
-    <div class="balloons text-center" id="b1">
-    	<h2 style="color:#F2B300;">x</h2>
-    </div>
-    <div class="balloons text-center" id="b2">
-    	<h2 style="color:#0719D4;">k</h2>
-    </div>
-	<div class="balloons text-center" id="b3">
-    	<h2 style="color:#D14D39;">l</h2>
-    </div>
-	<div class="balloons text-center" id="b4">
-    	<h2 style="color:#8FAD00;">p</h2>
-    </div>
-	<div class="balloons text-center" id="b5">
-    	<h2 style="color:#8377E4;">j</h2>
-    </div>
-    <div class="balloons text-center" id="b6">
-    	<h2 style="color:#99C96A;">r</h2>
-    </div>
-    <div class="balloons text-center" id="b7">
-    	<h2 style="color:#20CFB4;">t</h2>
-    </div>
-
-    <img src="Balloon-Border.png" width="100%" class="balloon-border">
- 
-
-	<div class="container">
-		
-		<div class="row">
-			<div class="col-md-2 col-xs-2 bulb-holder">
-				<div class="bulb" id="bulb_yellow"></div>
-			</div>
-			<div class="col-md-2 col-xs-2 bulb-holder">
-				<div class="bulb" id="bulb_red"></div>
-			</div>
-			<div class="col-md-2 col-xs-2 bulb-holder">
-				<div class="bulb" id="bulb_blue"></div>
-			</div>
-			<div class="col-md-2 col-xs-2 bulb-holder">
-				<div class="bulb" id="bulb_green"></div>
-			</div>
-			<div class="col-md-2 col-xs-2 bulb-holder">
-				<div class="bulb" id="bulb_pink"></div>
-			</div>
-			<div class="col-md-2 col-xs-2 bulb-holder">
-				<div class="bulb" id="bulb_orange"></div>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-12 text-center">
-				<img src="banner.png" class="bannar">
-			</div>
-		</div>
-		<!-- <div class="row message">
-			<div class="col-md-12"><p>Khushbu</p></div>
-		</div> -->
-		<div class="row cake-cover">
-			<div class="col-md-12 texr-center">
-				<div class="cake">
-				  <div class="velas">
-				    <div class="fuego"></div>
-				    <div class="fuego"></div>
-				    <div class="fuego"></div>
-				    <div class="fuego"></div>
-				    <div class="fuego"></div>
-				  </div>
-				  <div class="cobertura"></div>
-				  <div class="bizcocho"></div>
-				</div>
-			</div>
-		</div>
-		<div class="row message">
-			<div class="col-md-12">
-				<p>Today is...</p>
-				<p>as beautiful as other days</p>
-				<p>but you realize</p>
-				<p>another year has gone</p>
-				<p>in a blink of the eyes</p>
-				<p><strong>however</strong></p>
-				<p>Do you know..?</p>
-				<p>today is just special</p>
-				<p>so special to you</p>
-				<p>that's why</p>
-				<p>Let's make it...</p>
-				<p>the best celebration ever</p>
-				<p>and let me share...</p>
-				<p>a piece of happiness to you</p>
-				<p>I made all this...</p>
-				<p>as a birthday present to you</p>
-				<p>thanks for being there</p>
-				<p>thanks for the friendship we made</p>
-				<p>thanks for everything</p>
-				<p>I wish you all the best</p>
-				<p>May your life be at ease</p>
-				<p>May all your wishes come true</p>
-				<p>Remember</p>
-				<p>your ambitions</p>
-				<p>you live as a free bird...</p>
-				<p>flying in the blue sky</p>
-				<p>Now things are different...</p>
-				<p>real story of your life</p>
-				<p>is just about to begin</p>
-				<p>indeed..</p>
-				<p>this life is not easy as we thought</p>
-				<p>but...</p>
-				<p>don't worry</p>
-				<p>don't be afraid</p>
-				<p>because...</p>
-				<p>you are not alone in this world</p>
-				<p>because...</p>
-				<p>this year will be better</p>
-				<p>and I hope</p>
-				<p>you'll find...</p>
-				<p>happiness along the way</p>
-				<p>keep your spirits up</p>
-				<p>enjoy every single moment...</p>
-				<p>that you experiecne today</p>
-				<p>fill it with your most beautiful smile</p>
-				<p>and make it the best memory..</p>
-				<p>lastly...</p>
-				<p>I'd like to wish you one more time</p>
-				<p>a very happy birthday</p>
-			</div>
-		</div>
-		<div class="navbar navbar-fixed-bottom">
-			<div class="row">
-				<div class="col-md-6 text-center col-md-offset-3">
-					<button class="btn btn-primary" id="turn_on">Turn On Lights</button>
-					<button class="btn btn-primary" id="play">Play Music</button>
-					<button class="btn btn-primary" id="bannar_coming">Let's Decorate</button>
-					<button class="btn btn-primary" id="balloons_flying">Fly With Balloons</button>
-					<button class="btn btn-primary" id="cake_fadein">Most Delicious Cake Ever</button>
-					<button class="btn btn-primary" id="light_candle"> Light Candle</button>
-					<button class="btn btn-primary" id="wish_message">Happy Birthday</button>
-					<button class="btn btn-primary" id="story">A mesage for you</button>
-					<!-- <button class="btn btn-primary" id="cake_cut">Lrt's Cut the Cake</button> -->
-				</div>
-			</div>
-			<!-- <div class="col-md-2">
-			</div>
-			<div class="col-md-2">
-			</div>
-			<div class="col-md-2">
-			</div>
-			<div class="col-md-2">
-			</div>
-			<div class="col-md-2">
-			</div> -->
-		</div>
+    <div class="bo">
 
 
-	</div>
-</body>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-<script src="effect.js"></script>
+        <div id="tile_0" class="tile"><img src="" alt="" id="tile_icon_0" class="fa"></div>
+        <div id="tile_1" class="tile"><img src="" alt="" id="tile_icon_1" class="fa"></div>
+        <div id="tile_2" class="tile"><img src="" alt="" id="tile_icon_2" class="fa"></div>
+        <div id="tile_3" class="tile"><img src="" alt="" id="tile_icon_3" class="fa"></div>
+        <div id="tile_4" class="tile"><img src="" alt="" id="tile_icon_4" class="fa"></div>
+        <div id="tile_5" class="tile"><img src="" alt="" id="tile_icon_5" class="fa"></div>
+        <div id="tile_6" class="tile"><img src="" alt="" id="tile_icon_6" class="fa"></div>
+        <div id="tile_7" class="tile"><img src="" alt="" id="tile_icon_7" class="fa"></div>
+        <div id="tile_8" class="tile"><img src="" alt="" id="tile_icon_8" class="fa"></div>
+        <div id="tile_9" class="tile"><img src="" alt="" id="tile_icon_9" class="fa"></div>
+        <div id="tile_10" class="tile"><img src="" alt="" id="tile_icon_10" class="fa"></div>
+        <div id="tile_11" class="tile"><img src="" alt="" id="tile_icon_11" class="fa"></div>
+        <div id="tile_12" class="tile"><img src="" alt="" id="tile_icon_12" class="fa"></div>
+        <div id="tile_13" class="tile"><img src="" alt="" id="tile_icon_13" class="fa"></div>
+        <div id="tile_14" class="tile"><img src="" alt="" id="tile_icon_14" class="fa"></div>
+        <div id="tile_15" class="tile"><img src="" alt="" id="tile_icon_15" class="fa"></div>
+    </div>
+    
+  <div class="overlay_win" id="overlay_win">
+        <h2>You win!</h2>
+        <div id="replay">关灯</div>
+      </div>
 <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-  ga('create', 'UA-58229732-1', 'auto');
-  ga('send', 'pageview');
 
+function add_class(id, cl) {
+  var elem = document.getElementById(id);
+  if (elem.classList.contains(cl) !== true) {
+    elem.classList.add(cl);
+   
+  }
+}
+
+function rem_class(id, cl) {
+  var elem = document.getElementById(id);
+  if (elem.classList.contains(cl) === true) {
+    elem.classList.remove(cl);
+  }
+}
+
+
+function add_img(id,img)
+{
+  
+   
+    var elem = document.getElementById(id);  
+   
+        elem.setAttribute('src',img);
+      
+}
+function rem_img(id,img)
+{
+    var elem = document.getElementById(id);  
+        elem.setAttribute('src','');   
+}
+
+function add_elem(i, elem) {
+    console.log('elem:',elem);
+  document.getElementById("tile_" + i).onclick = function() {
+    window.opentile = i;
+    add_class("tile_" + i, "tile_open");
+    add_img("tile_icon_" + i, elem);
+
+    if (window.tilecount == 1) {
+      if (i != window.lasttile && window.A[i] == window.A[window.lasttile]) {
+        //checks if the 2 stmbols match and aren't the same tile
+        var first = document.getElementById("tile_" + i); //get tile id
+        var second = document.getElementById("tile_" + window.lasttile); //get tile id
+
+        first.classList.add("tile_closed"); //remove tiles
+        second.classList.add("tile_closed"); //remove tiles
+
+        first.onclick = ""; //remove event handlers
+        second.onclick = ""; //remove event handlers
+
+        window.paircount++; //increment pair count
+        if (window.paircount == 8) {
+          //win condition
+          //alert('You win!');//show victory banner here
+          add_class("overlay_win", "overlay_win_open");
+        }
+      } else {
+        rem_delay(window.opentile, window.lasttile); //clears the tiles with a 1 second delay(to let the player see the tile)
+      }
+
+      window.tilecount = 0; //resets the opened tile counter to 0
+    } else {
+      window.lasttile = i; //sets the last tile
+      window.tilecount++;
+    } //increments the tile count
+  };
+}
+function rem_select(i) {
+  rem_class("tile_" + i, "tile_open");
+  rem_img("tile_icon_" + i, "");
+}
+
+//this function hides tiles, with a delay
+//it is called when the tiles don't match
+
+function rem_delay(first, second) {
+  setTimeout(function() {
+    rem_select(first); //closes open tiles
+    rem_select(second); //closes open tiles
+  }, 1000);
+}
+
+
+function shuffle() {
+  var j;
+  var t;
+
+  var A = [
+    "1.png",
+    "1.png",
+    "1.png",
+    "1.png",
+    "2.jpg",
+    "2.jpg",
+    "2.jpg",
+    "2.jpg",
+    "3.jpg",
+    "3.jpg",
+    "3.jpg",
+    "3.jpg",
+    "4.jpg",
+    "4.jpg",
+    "4.jpg",
+    "4.jpg"
+  ];
+
+  for (i = 0; i < 16; i++) {
+    j = Math.floor(Math.random() * (i + 1));
+    t = A[i];
+    A[i] = A[j];
+    A[j] = t;
+  }
+  console.log(A);
+  return A;
+}
+
+var A = shuffle(); //shuffle the tiles
+var paircount = 0; //tracks the number of matches
+var tilecount = 0; //tracks the number of open tiles
+var lasttile = null; //tracks the last open tile
+var opentile = null; //tracks the current open tile
+
+//do stuff here
+
+for (i = 0; i < 16; i++) {
+  add_elem(i, A[i]); //adds event handlers to the tiles.
+}
+document.getElementById("replay").onclick = function() {
+ window.location.href = './test1.html'
+};
 </script>
-</html>
+</body>
