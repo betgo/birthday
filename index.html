@@ -2,6 +2,7 @@
 
 <head>
     <meta charset="utf-8">
+    <title>Happy Birthday</title>
     <style type="text/css">
     body {
   margin: 0;
@@ -121,6 +122,7 @@
 </head>
 
 <body>
+    <audio id="music" src="tr.mp3" autoplay="autoplay"></audio>
     <div class="bo">
 
 
@@ -230,7 +232,10 @@ function rem_delay(first, second) {
     rem_select(second); //closes open tiles
   }, 1000);
 }
-
+function playmusic(){
+ var audio = document.getElementById('music');
+ audio.play();
+}
 
 function shuffle() {
   var j;
@@ -239,20 +244,20 @@ function shuffle() {
   var A = [
     "1.png",
     "1.png",
-    "1.png",
-    "1.png",
-    "2.jpg",
-    "2.jpg",
-    "2.jpg",
-    "2.jpg",
-    "3.jpg",
-    "3.jpg",
-    "3.jpg",
-    "3.jpg",
-    "4.jpg",
-    "4.jpg",
-    "4.jpg",
-    "4.jpg"
+    "2.png",
+    "2.png",
+    "3.png",
+    "3.png",
+    "4.png",
+    "4.png",
+    "5.png",
+    "5.png",
+    "6.png",
+    "6.png",
+    "7.png",
+    "7.png",
+    "8.png",
+    "8.png"
   ];
 
   for (i = 0; i < 16; i++) {
@@ -270,7 +275,7 @@ var paircount = 0; //tracks the number of matches
 var tilecount = 0; //tracks the number of open tiles
 var lasttile = null; //tracks the last open tile
 var opentile = null; //tracks the current open tile
-
+//playmusic();
 //do stuff here
 
 for (i = 0; i < 16; i++) {
